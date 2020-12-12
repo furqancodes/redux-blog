@@ -1,12 +1,6 @@
 import { combineReducers } from "redux";
 
-const reducerExample = (defaultState = null, action) => {
-  if (action.type === "posts") {
-    return action.payload;
-  }
-  return defaultState;
-};
-
+import getPostReducer from "./getPost";
 export default combineReducers({
-  posts: reducerExample,
+  posts: getPostReducer,
 });
