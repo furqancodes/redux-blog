@@ -15,9 +15,10 @@ const Postlist = (props) => {
           <div className="content">
             <div className="description">
               <h2>{post.title}</h2>
+
               <p>{post.title}</p>
+              <Getuser id={post.userId} />
             </div>
-            <Getuser id={post.userId} />
           </div>
         </div>
       );
