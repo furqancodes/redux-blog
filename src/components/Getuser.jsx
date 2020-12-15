@@ -1,25 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 
-import { GetUserRequest } from "../actions";
-
 const Getuser = (props) => {
-  const found = props.user.find((us) => {
-    return us.id === props.id;
-  });
-  const { GetUserRequest, id } = props;
-  useEffect(() => {
-    GetUserRequest(id);
-  }, [GetUserRequest, id]);
-  if (!found) {
-    return <div>name not found</div>;
+  const { user } = props;
+
+  if (!user) {
+    return <div className="header">name not found</div>;
   }
-  return <div>{found.name}</div>;
+  return <div className="header">{user.name}</div>;
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   // console.log(state.user);
   return {
-    user: state.user,
+    user: state.user.find((us) => {
+      return us.id === ownProps.id;
+    }),
   };
 };
-export default connect(mapStateToProps, { GetUserRequest })(Getuser);
+export default connect(mapStateToProps)(Getuser);

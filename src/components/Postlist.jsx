@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { GetPostRequest } from "../actions";
+import { GetPostThenUser } from "../actions";
 import Getuser from "./Getuser";
 const Postlist = (props) => {
-  const { GetPostRequest } = props;
+  const { GetPostThenUser } = props;
   useEffect(() => {
-    GetPostRequest();
-  }, [GetPostRequest]);
+    GetPostThenUser();
+  }, [GetPostThenUser]);
   if (props.posts) {
     const newpost = props.posts.map((post) => {
       return (
@@ -33,4 +33,4 @@ const mapStateToProps = (state) => {
     posts: state.posts,
   };
 };
-export default connect(mapStateToProps, { GetPostRequest })(Postlist);
+export default connect(mapStateToProps, { GetPostThenUser })(Postlist);
